@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("Country Medal List", "CountryMedalList", "Home")</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>
+        
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    <script src="~/Scripts/jquery.signalR-2.2.2.min.js"></script>
+    @RenderSection("scripts", required: false)
+    <script src="http://192.168.1.6:57601/signalr/hubs" type="text/javascript"></script>
+
+    <script>
+        $(function () {
+            $.connection.hub.url = "http://192.168.1.6:57601/signalr";
+            
+            var chat = $.connection.notificationHub;
+
+            chat.client.notificationMessageToClient = function (t, m) {
+                PushNews(m);
+            };
+
+            $.connection.hub.start({ jsonp: true });
+            function PushNews(m) {
+                //alert(m);
+                //{"ID":37,"Title":"1111","NewsContentPreview":"2222...","GoldNews":true}
+                var news = eval('(' + m+')');
+                var notifiDiv = '<a href="./home/NewsDetail?nid=' + news.ID +'" id="boxNotification" class="panel">' +
+                    '<div style="position:fixed;top:100px;right:0px; border:1px solid black; border-radius:10px; padding:5px; min-width:300px;cursor:pointer;background-color:white;" >' +
+                    '<h1>News</h1> ' +
+                    '<h2>'+ news.Title +'</h2> ' +
+                    '<span>'+ news.NewsContentPreview +'</span>' +
+                    '</div></a > ';
+
+                $(".container").append(notifiDiv);
+                $("#boxNotification").hide(200);
+                $("#boxNotification").show(300);
+                
+            }
+        });
+
+    </script>
+
+</body>
+</html>

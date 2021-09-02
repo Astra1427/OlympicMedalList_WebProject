@@ -1,0 +1,88 @@
+﻿@model IEnumerable<WebProject.Models.Country>
+
+@{
+    ViewBag.Title = "Country Medal List";
+}
+
+<h2>Country Medal List</h2>
+
+
+
+<table class="table text-center table-condensed table-hover table-responsive table-striped">
+    <tr>
+        <th class="text-center">Rank</th>
+        <th class="text-left" >Country/Area</th>
+        <th class="text-center">Gold</th>
+        <th class="text-center">Silver</th>
+        <th class="text-center">Bronze</th>
+        <th class="text-center">Total Number</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+<tr>
+    <td>
+        @Html.DisplayFor(a => item.No)
+    </td>
+    <td class="text-left">
+        <img src="@string.Format("data:image/jpg;base64,{0}",Convert.ToBase64String(item.FlagImg))" style="width:60px; height:35px; vertical-align:central;" />
+        @Html.DisplayFor(modelItem => item.Name)
+    </td>
+    <td>
+        @Html.DisplayFor(a => item.GoldNumber)
+    </td>
+    <td>
+        @Html.DisplayFor(a => item.SilverNumber)
+    </td>
+    <td>
+        @Html.DisplayFor(a => item.BronzeNumber)
+    </td>
+    <td>
+        @Html.DisplayFor(a => item.TotalNumber)
+    </td>
+</tr>
+
+    }
+</table>
+
+
+
+
+@*
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Flag)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FlagImg)
+            </th>
+            <th></th>
+        </tr>
+
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Flag)
+            </td>
+        <td>
+*@
+@*<img src="@String.Format($"data:image/jpg;base64,{Convert.ToBase64String(item.FlagImg)}")" style="width:100px;height:75px;" />*@
+@*@Html.DisplayFor(modelItem => item.FlagImg)*@
+@*</td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                </td>
+                </tr>
+                }
+
+    </table>
+*@

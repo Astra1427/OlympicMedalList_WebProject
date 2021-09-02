@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link href="../../Content/bootstrap.css" rel="stylesheet" />
+</head>
+<body>
+    <!--<a href="#" class="panel">
+        <div id="boxNotification" style="position:fixed;top:100px;right:0px; border:1px solid black; border-radius:10px; padding:5px; min-width:300px;cursor:pointer;">
+            <h2>
+                News
+            </h2>
+            <span>news news news news news</span>
+        </div>
+    </a>-->
+    <div class="container">
+        
+    </div>
+    <script src="../../Scripts/jquery-3.4.1.min.js"></script>
+    <script>
+        $(function () {
+            //$("#boxNotification").hide(200);
+            //$("#boxNotification").show(200);
+
+            var notifiDiv = '<a href="#" class="panel">' +
+                '<div id="boxNotification" style="position:fixed;top:100px;right:0px; border:1px solid black; border-radius:10px; padding:5px; min-width:300px;cursor:pointer;" >'+
+                '<h2> News</h2> '+
+                '<span> news news news news news</span>'+
+            '</div></a > ';
+            
+            $(".container").append(notifiDiv);
+        });
+    </script>
+</body>
+</html>

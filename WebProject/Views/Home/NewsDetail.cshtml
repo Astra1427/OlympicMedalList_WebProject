@@ -1,0 +1,67 @@
+﻿@model WebProject.Models.News
+
+@{
+    ViewBag.Title = "NewsDetail";
+}
+
+<h2>NewsDetail</h2>
+
+<div>
+    <h4>News</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NewsContent)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NewsContent)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NewsContentPreview)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NewsContentPreview)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PublishTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PublishTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GoldNews)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GoldNews)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Account.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Account.Name)
+        </dd>
+
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
